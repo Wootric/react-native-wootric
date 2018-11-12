@@ -18,6 +18,20 @@
 3. In XCode, in the project navigator, select your project. Add `libRNWootric.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
 
+##### iOS only: additional steps for iOS
+
+- Download the SDK and add it to your project without using any dependency manager.
+
+1. [Download](https://github.com/Wootric/WootricSDK-iOS/releases) & unzip the Wootric SDK
+
+2. In your Xcode project, drag & drop the WootricSDK.framework in the RNWootric.xcodeproj 
+
+Your project will look something like this
+
+![Xcode](https://user-images.githubusercontent.com/1431421/48356656-bb66e180-e664-11e8-98a5-d931a17be807.png)
+
+*Make sure the "Copy items if needed" checkbox is checked.*
+
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
