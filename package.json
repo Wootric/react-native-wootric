@@ -1,18 +1,20 @@
 {
-  "name": "react-native-wootric",
-  "version": "1.0.0",
+  "name": "@wootric/react-native-wootric",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "react-native-wootric"
   ],
-  "author": "",
-  "license": "",
-  "peerDependencies": {
-    "react-native": "^0.41.2",
-    "react-native-windows": "0.41.0-rc.1"
-  }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wootric/react-native-wootric"
+  },
+  "homepage": "https://github.com/Wootric/react-native-wootric#readme",
+  "author": "Wootric",
+  "license": "Apache-2.0"
 }
