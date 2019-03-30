@@ -1,64 +1,29 @@
+<p align="center">
+  <a href="https://circleci.com/gh/Wootric/react-native-wootric"><img src="https://circleci.com/gh/Wootric/react-native-wootric.svg?style=svg" alt="circle-ci: build"></a>
+  <a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+</p>
+
 # react-native-wootric
 
 ## Getting started
 
-`$ npm install react-native-wootric --save`
+`$ npm install @wootric/react-native-wootric --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-wootric`
+As `@wootric/react-native-wootric` contains native codes so requires your project to link our native module library:
+
+`$ react-native link`
 
 ### Manual installation
-
-
-#### iOS
-
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-wootric` and add `RNWootric.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNWootric.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
-
-##### iOS only: additional steps for iOS
-
-- Download the SDK and add it to your project without using any dependency manager.
-
-1. [Download](https://github.com/Wootric/WootricSDK-iOS/releases) & unzip the Wootric SDK
-
-2. In your Xcode project, drag & drop the WootricSDK.framework in the RNWootric.xcodeproj 
-
-Your project will look something like this
-
-![Xcode](https://user-images.githubusercontent.com/1431421/48356656-bb66e180-e664-11e8-98a5-d931a17be807.png)
-
-*Make sure the "Copy items if needed" checkbox is checked.*
-
-#### Android
-
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNWootricPackage;` to the imports at the top of the file
-  - Add `new RNWootricPackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-wootric'
-  	project(':react-native-wootric').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-wootric/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-wootric')
-  	```
+[Linking Libraries](https://facebook.github.io/react-native/docs/linking-libraries-ios)
 
 #### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNWootric.sln` in `node_modules/react-native-wootric/windows/RNWootric.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Wootric.RNWootric;` to the usings at the top of the file
-  - Add `new RNWootricPackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
+Support for Windows is currently not available.
 
 ## Usage
 ```javascript
-import RNWootric from 'react-native-wootric';
+import RNWootric from '@wootric/react-native-wootric';
 
 RNWootric.configureWithClientID("client_id", "NPS-1234asdf");
 RNWootric.setEndUserEmail("react_example@wootric.com");
@@ -74,3 +39,11 @@ RNWootric.setCustomProductName("Wootric React Native");
 RNWootric.setCustomAudience("un amigo");
 RNWootric.showSurvey();
 ```
+
+## Possbile Errors and Solutions
+1. If link fails then please delete node_modules dir and package-lock.json from your react native project and run `npm install` again.
+
+2. If you get `Error:Execution failed for task ':app:processDebugResources'. > java.io.IOException: Could not delete folder “”` while running your react native for android (ex. react-native run-android) then please clean your android project (ex. gradlew clean) and run project again.
+
+## License
+[MIT License](https://choosealicense.com/licenses/mit/)
