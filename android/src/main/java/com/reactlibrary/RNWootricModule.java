@@ -7,8 +7,10 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
 import com.wootric.androidsdk.Wootric;
+import com.wootric.androidsdk.objects.WootricCustomThankYou;
 
 import java.util.HashMap;
+import android.net.Uri;
 
 public class RNWootricModule extends ReactContextBaseJavaModule {
 
@@ -115,5 +117,14 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void showSurvey() {
     wootric.survey();
+  }
+
+  @ReactMethod
+  public void enablePromoterThankYou(String text, String url) {
+    WootricCustomThankYou customThankYou = new WootricCustomThankYou();
+    Uri uri = Uri.parse(url);
+    customThankYou.setPromoterLinkText(text);
+    customThankYou.setPromoterLinkUri(uri);
+    wootric.setCustomThankYou(customThankYou);
   }
 }
