@@ -38,6 +38,7 @@ RNWootric.setCustomLanguage("ES");
 RNWootric.setCustomProductName("Wootric React Native");
 RNWootric.setCustomAudience("un amigo");
 RNWootric.showSurvey();
+RNWootric.enablePromoterThankYou("Rate our app!", "my-url");
 ```
 
 ## Possbile Errors and Solutions
