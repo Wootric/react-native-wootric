@@ -15,35 +15,64 @@ As `@wootric/react-native-wootric` contains native codes so requires your projec
 
 `$ react-native link`
 
+### CocoaPods installation
+
+Add the dependency to your `ios/Podfile` file:
+
+```diff
+platform :ios, '9.0'
+
+target 'Podfile' do
+  # React installation from CocoaPods
+  pod 'React', :path => '../node_modules/react-native', :subspecs => [
+    'Core',
+    'CxxBridge',
+    'DevSupport',
+    'RCTText',
+    ...
+  ]
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+
++  pod 'react-native-wootric', :path => '../node_modules/react-native-wootric'
+end
+```
+
+Then, run `pod install`.
+
 ### Manual installation
+
 [Linking Libraries](https://facebook.github.io/react-native/docs/linking-libraries-ios)
 
 #### Windows
+
 Support for Windows is currently not available.
 
 ## Usage
+
 ```javascript
 import RNWootric from '@wootric/react-native-wootric';
 
-RNWootric.configureWithClientID("client_id", "NPS-1234asdf");
-RNWootric.setEndUserEmail("react_example@wootric.com");
+RNWootric.configureWithClientID('client_id', 'NPS-1234asdf');
+RNWootric.setEndUserEmail('react_example@wootric.com');
 RNWootric.setSurveyImmediately(true);
 RNWootric.setEndUserCreatedAt(1234567890);
-RNWootric.setEndUserExternalId("external_id_1234");
-RNWootric.setEndUserPhoneNumber("+17865551234");
-RNWootric.setEndUserProperties({first_name: "React", last_name: "Native"});
+RNWootric.setEndUserExternalId('external_id_1234');
+RNWootric.setEndUserPhoneNumber('+17865551234');
+RNWootric.setEndUserProperties({ first_name: 'React', last_name: 'Native' });
 RNWootric.showOptOut(true);
 RNWootric.setFirstSurveyAfter(5);
-RNWootric.setCustomLanguage("ES");
-RNWootric.setCustomProductName("Wootric React Native");
-RNWootric.setCustomAudience("un amigo");
+RNWootric.setCustomLanguage('ES');
+RNWootric.setCustomProductName('Wootric React Native');
+RNWootric.setCustomAudience('un amigo');
 RNWootric.showSurvey();
 ```
 
 ## Possbile Errors and Solutions
+
 1. If link fails then please delete node_modules dir and package-lock.json from your react native project and run `npm install` again.
 
 2. If you get `Error:Execution failed for task ':app:processDebugResources'. > java.io.IOException: Could not delete folder “”` while running your react native for android (ex. react-native run-android) then please clean your android project (ex. gradlew clean) and run project again.
 
 ## License
+
 [MIT License](https://choosealicense.com/licenses/mit/)
