@@ -1,6 +1,6 @@
 
 Pod::Spec.new do |s|
-  s.name         = "RNWootric"
+  s.name         = "react-native-wootric"
   s.version      = package['version']
   s.summary      = "React Native package for Wootric SDK"
   s.homepage     = "https://github.com/Wootric/react-native-wootric"
