@@ -114,7 +114,8 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void forceSurvey(boolean force) {
-    wootric.forceSurvey(force);
+    // Workaround for Android
+    this.setSurveyImmediately(force);
   }
 
   @ReactMethod
