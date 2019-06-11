@@ -5,7 +5,7 @@
 
 - (dispatch_queue_t)methodQueue
 {
-    return dispatch_get_main_queue();
+  return dispatch_get_main_queue();
 }
 
 RCT_EXPORT_MODULE();
@@ -58,8 +58,13 @@ RCT_EXPORT_METHOD(setCustomAudience:(NSString *)audience) {
   [Wootric setCustomAudience:audience];
 }
 
+RCT_EXPORT_METHOD(forceSurvey:(BOOL)force) {
+  [Wootric forceSurvey:force];
+}
+
 RCT_EXPORT_METHOD(showSurvey) {
   [Wootric showSurveyInViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
 }
+
 @end
-  
+
