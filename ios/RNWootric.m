@@ -58,8 +58,13 @@ RCT_EXPORT_METHOD(setCustomAudience:(NSString *)audience) {
   [Wootric setCustomAudience:audience];
 }
 
+RCT_EXPORT_METHOD(setCustomNPSQuestion:(NSString *)question) {
+  [Wootric setCustomNPSQuestion:question];
+}
+
 RCT_EXPORT_METHOD(showSurvey) {
   [Wootric showSurveyInViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
 }
+
 @end
-  
+
