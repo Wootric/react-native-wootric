@@ -13,7 +13,9 @@
 
 As `@wootric/react-native-wootric` contains native codes so requires your project to link our native module library:
 
-`$ react-native link`
+`$ react-native link @wootric/react-native-wootric` //Do not run if you are using React Native version 0.60 or greater.
+
+> [`Autolinking`](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) is a replacement for `react-native link`. If you have been using React Native before version 0.60, please `unlink` native dependencies if you have any from a previous install.
 
 ### Manual installation
 [Linking Libraries](https://facebook.github.io/react-native/docs/linking-libraries-ios)
@@ -25,7 +27,7 @@ Support for Windows is currently not available.
 ```javascript
 import RNWootric from '@wootric/react-native-wootric';
 
-RNWootric.configureWithClientID("client_id", "NPS-1234asdf");
+RNWootric.configureWithClientID("client_id", "account_token"); //replace `client_id` and `account_token` with yours from Wootric dashboard account settings.
 RNWootric.setEndUserEmail("react_example@wootric.com");
 RNWootric.setSurveyImmediately(true);
 RNWootric.setEndUserCreatedAt(1234567890);
