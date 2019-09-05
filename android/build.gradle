@@ -39,5 +39,5 @@ repositories {
 
 dependencies {
   implementation 'com.facebook.react:react-native:+'
-  implementation 'com.wootric:wootric-sdk-android:2.13.0'
+  implementation 'com.wootric:wootric-sdk-android:+'
 }
