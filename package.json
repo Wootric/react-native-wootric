@@ -1,6 +1,6 @@
 {
   "name": "@wootric/react-native-wootric",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,5 +16,5 @@
   },
   "homepage": "https://github.com/Wootric/react-native-wootric#readme",
   "author": "Wootric",
-  "license": "Apache-2.0"
+  "license": "MIT"
 }
