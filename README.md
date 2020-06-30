@@ -9,7 +9,16 @@
 
 `$ npm install @wootric/react-native-wootric --save`
 
-### Mostly automatic installation
+### iOS
+
+Install the `WootricSDK` using Cocoapods
+
+```bash
+$ cd ios
+$ pod install
+```
+
+### ReactNative <= 0.60
 
 As `@wootric/react-native-wootric` contains native codes so requires your project to link our native module library:
 
