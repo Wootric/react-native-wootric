@@ -61,5 +61,11 @@ RCT_EXPORT_METHOD(setCustomAudience:(NSString *)audience) {
 RCT_EXPORT_METHOD(showSurvey) {
   [Wootric showSurveyInViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
 }
+
+RCT_EXPORT_METHOD(setPromoterThankYouLinkWithText:(NSString *)text link:(NSString *)link){
+  NSURL *url = [NSURL URLWithString:link];
+  [Wootric setPromoterThankYouLinkWithText:text URL:url];
+}
+
 @end
   
