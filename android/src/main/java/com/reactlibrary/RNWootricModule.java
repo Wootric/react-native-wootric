@@ -151,7 +151,11 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void showSurvey() {
     if (wootric == null) return;
-    
-    wootric.survey();
+
+    try {
+      wootric.survey();
+    } catch (Exception e) {
+      Log.e("WOOTRIC", e.toString());
+    }
   }
 }
