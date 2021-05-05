@@ -32,18 +32,18 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
       ReadableType type = readableMap.getType(key);
 
       switch (type) {
-        case Null:
-          map.put(key, null);
-          break;
-        case Boolean:
-          map.put(key, Boolean.toString(readableMap.getBoolean(key)));
-          break;
-        case Number:
-          map.put(key, Double.toString(readableMap.getDouble(key)));
-          break;
-        case String:
-          map.put(key, readableMap.getString(key));
-          break;
+      case Null:
+        map.put(key, null);
+        break;
+      case Boolean:
+        map.put(key, Boolean.toString(readableMap.getBoolean(key)));
+        break;
+      case Number:
+        map.put(key, Double.toString(readableMap.getDouble(key)));
+        break;
+      case String:
+        map.put(key, readableMap.getString(key));
+        break;
       }
     }
 
@@ -146,6 +146,12 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
     if (wootric == null) return;
 
     wootric.setRecommendTarget(audience);
+  }
+
+  @ReactMethod
+  public void forceSurvey(boolean force) {
+    // Workaround for Android
+    this.setSurveyImmediately(force);
   }
 
   @ReactMethod
