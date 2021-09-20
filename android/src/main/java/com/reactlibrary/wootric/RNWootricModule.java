@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.reactlibrary.wootric;
 
 import android.app.Activity;
 import android.util.Log;
