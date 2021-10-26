@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.reactlibrary.wootric;
 
 import android.app.Activity;
 import android.util.Log;
@@ -153,7 +153,12 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
     if (wootric == null) return;
 
     try {
-      wootric.survey();
+      getCurrentActivity().runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+          wootric.survey();
+        }
+      });
     } catch (Exception e) {
       Log.e("WOOTRIC", e.toString());
     }
