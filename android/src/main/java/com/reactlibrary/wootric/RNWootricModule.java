@@ -149,11 +149,21 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void forceSurvey(boolean force) {
+    // Workaround for Android
+    this.setSurveyImmediately(force);
+  }
+
+  @ReactMethod
   public void showSurvey() {
     if (wootric == null) return;
 
     try {
-      wootric.survey();
+      runOnUiThread (new Thread(new Runnable() {
+        public void run() {
+          wootric.survey();
+        }
+      }));
     } catch (Exception e) {
       Log.e("WOOTRIC", e.toString());
     }
