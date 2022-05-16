@@ -1,4 +1,6 @@
-package com.reactlibrary;
+package com.reactlibrary.wootric;
+
+import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
 import android.app.Activity;
 import android.util.Log;
@@ -39,7 +41,7 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
           map.put(key, Boolean.toString(readableMap.getBoolean(key)));
           break;
         case Number:
-          map.put(key, Double.toString(readableMap.getDouble(key)));
+          map.put(key, Integer.toString(readableMap.getInt(key)));
           break;
         case String:
           map.put(key, readableMap.getString(key));
@@ -149,11 +151,21 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void forceSurvey(boolean force) {
+    // Workaround for Android
+    this.setSurveyImmediately(force);
+  }
+
+  @ReactMethod
   public void showSurvey() {
     if (wootric == null) return;
 
     try {
-      wootric.survey();
+      runOnUiThread (new Thread(new Runnable() {
+        public void run() {
+          wootric.survey();
+        }
+      }));
     } catch (Exception e) {
       Log.e("WOOTRIC", e.toString());
     }

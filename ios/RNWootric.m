@@ -58,6 +58,10 @@ RCT_EXPORT_METHOD(setCustomAudience:(NSString *)audience) {
   [Wootric setCustomAudience:audience];
 }
 
+RCT_EXPORT_METHOD(forceSurvey:(BOOL)force) {
+  [Wootric forceSurvey:force];
+}
+
 RCT_EXPORT_METHOD(showSurvey) {
   [Wootric showSurveyInViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
 }
