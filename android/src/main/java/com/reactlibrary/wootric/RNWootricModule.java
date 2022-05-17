@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.reactlibrary.wootric;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
