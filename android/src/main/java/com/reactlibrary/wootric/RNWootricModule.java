@@ -1,5 +1,7 @@
 package com.reactlibrary;
 
+import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
+
 import android.app.Activity;
 import android.util.Log;
 
