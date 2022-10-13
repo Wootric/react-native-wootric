@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
 
   s.dependency "React"
-  s.dependency "WootricSDK"
+  s.dependency "WootricSDK", branch: "ds-uifont-fix"
 
 end
 
