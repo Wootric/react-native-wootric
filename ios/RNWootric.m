@@ -65,5 +65,13 @@ RCT_EXPORT_METHOD(forceSurvey:(BOOL)force) {
 RCT_EXPORT_METHOD(showSurvey) {
   [Wootric showSurveyInViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
 }
+
+RCT_EXPORT_METHOD(setPromoterThankYouLinkWithText:(NSString *)text url:(NSURL *)URL) {
+  [Wootric setPromoterThankYouLinkWithText:text URL:URL];
+}
+
+RCT_EXPORT_METHOD(setPassiveThankYouLinkWithText:(NSString *)text url:(NSURL *)URL) {
+  [Wootric setPassiveThankYouLinkWithText:text URL:URL];
+}
 @end
   

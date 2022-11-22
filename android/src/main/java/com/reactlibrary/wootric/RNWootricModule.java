@@ -4,6 +4,7 @@ import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
 import android.app.Activity;
 import android.util.Log;
+import android.net.Uri;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -12,6 +13,8 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
 import com.wootric.androidsdk.Wootric;
+import com.wootric.androidsdk.Wootric;
+import com.wootric.androidsdk.objects.WootricCustomThankYou;
 
 import java.util.HashMap;
 
@@ -169,5 +172,29 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
     } catch (Exception e) {
       Log.e("WOOTRIC", e.toString());
     }
+  }
+
+  @ReactMethod
+  public void setPromoterThankYouLinkWithText(String promoterLinkText, String promoterLinkUri ) {
+
+    WootricCustomThankYou customThankYou = new WootricCustomThankYou();
+
+    customThankYou.setPromoterLinkUri(Uri.parse(promoterLinkUri));
+    customThankYou.setPromoterLinkText(promoterLinkText);
+
+    if (wootric == null) return;
+    wootric.setCustomThankYou(customThankYou);
+  }
+
+  @ReactMethod
+  public void setPassiveThankYouLinkWithText(String passiveLinkText, String passiveLinkUri ) {
+
+    WootricCustomThankYou customThankYou = new WootricCustomThankYou();
+
+    customThankYou.setPassiveLinkUri(Uri.parse(passiveLinkUri));
+    customThankYou.setPassiveLinkText(passiveLinkText);
+    
+    if (wootric == null) return;
+    wootric.setCustomThankYou(customThankYou);
   }
 }
