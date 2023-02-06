@@ -31,6 +31,7 @@ android {
 
 repositories {
   mavenCentral()
+  maven { url 'https://jitpack.io' }
   maven {
     url 'https://maven.google.com/'
     name 'Google'
@@ -39,5 +40,6 @@ repositories {
 
 dependencies {
   implementation 'com.facebook.react:react-native:+'
-  implementation 'com.wootric:wootric-sdk-android:+'
+//  implementation 'com.wootric:wootric-sdk-android:+'
+  implementation 'com.github.Wootric:WootricSDK-Android:ds-DEV-30805-add-support-custom-first-question-SNAPSHOT'
 }
