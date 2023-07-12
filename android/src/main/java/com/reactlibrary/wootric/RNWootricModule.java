@@ -151,6 +151,13 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void setEventName(String eventName) {
+    if (wootric == null) return;
+
+    wootric.setEventName(eventName);
+  }
+
+  @ReactMethod
   public void forceSurvey(boolean force) {
     // Workaround for Android
     this.setSurveyImmediately(force);

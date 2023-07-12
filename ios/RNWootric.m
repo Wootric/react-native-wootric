@@ -42,6 +42,10 @@ RCT_EXPORT_METHOD(showOptOut:(BOOL)flag) {
   [Wootric showOptOut:flag];
 }
 
+RCT_EXPORT_METHOD(setEventName:(NSString *)eventName) {
+  [Wootric setEventName:eventName];
+}
+
 RCT_EXPORT_METHOD(setFirstSurveyAfter:(nonnull NSNumber *)firstSurveyAfter) {
   [Wootric setFirstSurveyAfter:firstSurveyAfter];
 }
