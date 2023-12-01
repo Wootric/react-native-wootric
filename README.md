@@ -39,6 +39,7 @@ import RNWootric from '@wootric/react-native-wootric';
 RNWootric.configureWithClientID("client_id", "account_token"); //replace `client_id` and `account_token` with yours from Wootric dashboard account settings.
 RNWootric.setEndUserEmail("react_example@wootric.com");
 RNWootric.setSurveyImmediately(true);
+RNWootric.forceSurvey(true);
 RNWootric.setEndUserCreatedAt(1234567890);
 RNWootric.setEndUserExternalId("external_id_1234");
 RNWootric.setEndUserPhoneNumber("+17865551234");
@@ -51,7 +52,7 @@ RNWootric.setCustomAudience("un amigo");
 RNWootric.showSurvey();
 ```
 
-## Possbile Errors and Solutions
+## Possible Errors and Solutions
 1. If link fails then please delete node_modules dir and package-lock.json from your react native project and run `npm install` again.
 
 2. If you get `Error:Execution failed for task ':app:processDebugResources'. > java.io.IOException: Could not delete folder “”` while running your react native for android (ex. react-native run-android) then please clean your android project (ex. gradlew clean) and run project again.
