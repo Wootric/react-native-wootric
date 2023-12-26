@@ -62,6 +62,10 @@ RCT_EXPORT_METHOD(setCustomAudience:(NSString *)audience) {
   [Wootric setCustomAudience:audience];
 }
 
+RCT_EXPORT_METHOD(showDisclaimerText:(NSString *)disclaimerText link:(NSURL *)link linkText:(NSString *)linkText) {
+  [Wootric showDisclaimerText:disclaimerText link:link linkText:linkText];
+}
+
 RCT_EXPORT_METHOD(forceSurvey:(BOOL)force) {
   [Wootric forceSurvey:force];
 }

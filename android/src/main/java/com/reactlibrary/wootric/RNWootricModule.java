@@ -4,6 +4,7 @@ import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
 import android.app.Activity;
 import android.util.Log;
+import android.net.Uri;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -155,6 +156,14 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
     if (wootric == null) return;
 
     wootric.setEventName(eventName);
+  }
+
+  @ReactMethod
+  public void showDisclaimerText(String disclaimerText, String disclaimerLinkURL, String disclaimerLinkText) {
+    if (wootric == null) return;
+
+    Uri disclaimerLinkURI = Uri.parse(disclaimerLinkURL);
+    wootric.showDisclaimer(disclaimerText, disclaimerLinkURI, disclaimerLinkText);
   }
 
   @ReactMethod
