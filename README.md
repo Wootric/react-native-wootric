@@ -49,6 +49,7 @@ RNWootric.setFirstSurveyAfter(5);
 RNWootric.setCustomLanguage("ES");
 RNWootric.setCustomProductName("Wootric React Native");
 RNWootric.setCustomAudience("un amigo");
+RNWootric.showDisclaimerText("Learn how we handle your feedback","https://example.com/terms-of-use","here");
 RNWootric.showSurvey();
 ```
 
