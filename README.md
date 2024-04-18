@@ -49,6 +49,10 @@ RNWootric.setCustomLanguage("ES");
 RNWootric.setCustomProductName("Wootric React Native");
 RNWootric.setCustomAudience("un amigo");
 RNWootric.showSurvey();
+RNWootric.eventEmitter.addListener("surveyWillShow", () => console.log("surveyWillShow"))
+RNWootric.eventEmitter.addListener("surveyDidShow", () => console.log("surveyDidShow"))
+RNWootric.eventEmitter.addListener("surveyWillHide", () => console.log("surveyWillHide"))
+RNWootric.eventEmitter.addListener("surveyWillShow", values => console.log("surveyDidHide", values))
 ```
 
 ## Possbile Errors and Solutions

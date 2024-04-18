@@ -1,17 +1,33 @@
 #import <WootricSDK/WootricSDK.h>
+#import <WootricSDK/WTRSurveyDelegate.h>
 #import "RNWootric.h"
 
 @implementation RNWootric
+{
+  bool hasListeners;
+}
+
+- (NSArray<NSString *> *)supportedEvents {
+  return @[
+    @"surveyWillShow",
+    @"surveyDidShow",
+    @"surveyWillHide",
+    @"surveyDidHide",
+  ];
+}
 
 - (dispatch_queue_t)methodQueue
 {
-    return dispatch_get_main_queue();
+  return dispatch_get_main_queue();
 }
 
 RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(configureWithClientID:(NSString *)clientID accountToken:(NSString *)accountToken) {
   [Wootric configureWithClientID:clientID accountToken:accountToken];
+  
+  // https://docs.wootric.com/ios/#survey-delegate
+  [Wootric setDelegate:self];
 }
 
 RCT_EXPORT_METHOD(setEndUserEmail:(NSString *)email) {
@@ -65,5 +81,40 @@ RCT_EXPORT_METHOD(forceSurvey:(BOOL)force) {
 RCT_EXPORT_METHOD(showSurvey) {
   [Wootric showSurveyInViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
 }
-@end
+
+// https://reactnative.dev/docs/native-modules-ios#sending-events-to-javascript
+- (void)startObserving {
+  hasListeners = YES;
+}
+
+- (void)stopObserving {
+  hasListeners = NO;
+}
+
+- (void)willPresentSurvey {
+  if (hasListeners) {
+    [self sendEventWithName:@"surveyWillShow" body:nil ];
+  }
+}
+
+- (void)didPresentSurvey {
+  if (hasListeners) {
+    [self sendEventWithName:@"surveyDidShow" body:nil ];
+  }
+}
+
+- (void)willHideSurvey {
+  if (hasListeners) {
+    [self sendEventWithName:@"surveyWillHide" body:nil ];
+  }
   
+}
+
+- (void)didHideSurvey:(NSDictionary *)data {
+  if (hasListeners) {
+    [self sendEventWithName:@"surveyDidHide" body:data ];
+  }
+  
+}
+
+@end
