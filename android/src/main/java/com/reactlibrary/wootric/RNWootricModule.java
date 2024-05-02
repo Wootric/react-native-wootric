@@ -6,13 +6,19 @@ import android.app.Activity;
 import android.util.Log;
 import android.net.Uri;
 
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
+import com.facebook.react.bridge.WritableMap;
+
 import com.wootric.androidsdk.Wootric;
+import com.wootric.androidsdk.WootricSurveyCallback;
 
 import java.util.HashMap;
 
@@ -69,6 +75,7 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
 
     try {
       wootric = Wootric.init(currentActivity, clientId, accountToken);
+      wootric.setSurveyCallback(new RNWootricSurveyCallbacks());
     } catch (Exception e) {
       Log.e("WOOTRIC", e.toString());
     }
@@ -177,13 +184,41 @@ public class RNWootricModule extends ReactContextBaseJavaModule {
     if (wootric == null) return;
 
     try {
-      runOnUiThread (new Thread(new Runnable() {
+      runOnUiThread(new Thread(new Runnable() {
         public void run() {
           wootric.survey();
         }
       }));
     } catch (Exception e) {
       Log.e("WOOTRIC", e.toString());
+    }
+  }
+
+  // https://docs.wootric.com/android/#survey-callbacks
+  private class RNWootricSurveyCallbacks implements WootricSurveyCallback {
+    // https://reactnative.dev/docs/native-modules-android?android-language=java#sending-events-to-javascript
+    private void sendEvent(String eventName, WritableMap params) {
+      reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
+    }
+
+    @Override
+    public void onSurveyWillShow() {
+      sendEvent("surveyWillShow", null);
+    }
+
+    @Override
+    public void onSurveyDidShow() {
+      sendEvent("surveyDidShow", null);
+    }
+
+    @Override
+    public void onSurveyWillHide() {
+      sendEvent("surveyWillHide", null);
+    }
+
+    @Override
+    public void onSurveyDidHide(HashMap values) {
+      sendEvent("surveyDidHide", Arguments.makeNativeMap(values));
     }
   }
 }

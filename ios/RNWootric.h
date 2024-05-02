@@ -4,8 +4,11 @@
 #else
 #import <React/RCTBridgeModule.h>
 #endif
+#import <React/RCTEventEmitter.h>
+#import "WootricSDK/WTRSurveyDelegate.h"
 
-@interface RNWootric : NSObject <RCTBridgeModule>
+
+@interface RNWootric : RCTEventEmitter <RCTBridgeModule, WTRSurveyDelegate>
 
 @end
   

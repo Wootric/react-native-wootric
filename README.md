@@ -51,6 +51,10 @@ RNWootric.setCustomProductName("Wootric React Native");
 RNWootric.setCustomAudience("un amigo");
 RNWootric.showDisclaimerText("Learn how we handle your feedback","https://example.com/terms-of-use","here");
 RNWootric.showSurvey();
+RNWootric.eventEmitter.addListener("surveyWillShow", () => console.log("surveyWillShow"))
+RNWootric.eventEmitter.addListener("surveyDidShow", () => console.log("surveyDidShow"))
+RNWootric.eventEmitter.addListener("surveyWillHide", () => console.log("surveyWillHide"))
+RNWootric.eventEmitter.addListener("surveyWillShow", values => console.log("surveyDidHide", values))
 ```
 
 ## Possible Errors and Solutions
